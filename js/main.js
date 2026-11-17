@@ -210,3 +210,20 @@
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });
 })();
+
+// 3D / AR viewer: progress bar + hide the desktop note when AR is available
+(function () {
+  const mv = document.getElementById("recharge-3d");
+  if (!mv) return;
+  const bar = mv.querySelector(".view3d-progress");
+  const fill = bar && bar.querySelector("span");
+  mv.addEventListener("progress", function (e) {
+    const p = e.detail.totalProgress;
+    if (fill) fill.style.width = Math.round(p * 100) + "%";
+    if (bar) bar.classList.toggle("hide", p >= 1);
+  });
+  const note = document.getElementById("view3d-desktop-note");
+  mv.addEventListener("load", function () {
+    if (mv.canActivateAR && note) note.classList.add("is-hidden");
+  });
+})();

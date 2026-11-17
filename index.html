@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 <body>
   <div class="promo">
@@ -74,6 +75,10 @@
             <button class="gallery-btn prev" type="button" aria-label="Previous image">‹</button>
             <img id="gallery-main" src="assets/recharge-angle.png" alt="The Recharge spa with a light interior, dark slatted cabinet and teal corner lighting">
             <button class="gallery-btn next" type="button" aria-label="Next image">›</button>
+            <a class="gallery-3d-btn" href="#view-in-3d">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.8l8 4.4v9.6l-8 4.4-8-4.4V7.2l8-4.4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4.3 7.4L12 11.7l7.7-4.3M12 11.7v9" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+              View in 3D &amp; AR
+            </a>
           </div>
           <div class="thumbs" id="gallery-thumbs" role="list"></div>
 
@@ -178,6 +183,59 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section view3d" id="view-in-3d">
+      <div class="wrap view3d-grid">
+        <div class="view3d-stage">
+          <model-viewer id="recharge-3d"
+            src="assets/3d/recharge-spa.glb"
+            ios-src="assets/3d/recharge-spa.usdz"
+            poster="assets/3d/recharge-3d-poster.jpg"
+            alt="Interactive 3D model of the Passion Spas Recharge, a round 7-seat spa with a white acrylic shell and charcoal slatted cabinet"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            ar-scale="fixed"
+            ar-placement="floor"
+            camera-controls
+            touch-action="pan-y"
+            auto-rotate
+            auto-rotate-delay="1500"
+            rotation-per-second="18deg"
+            camera-orbit="30deg 64deg 105%"
+            min-camera-orbit="auto 0deg 2.4m"
+            max-camera-orbit="auto 88deg 7m"
+            shadow-intensity="1"
+            shadow-softness="0.8"
+            exposure="1"
+            environment-image="neutral"
+            interaction-prompt="auto"
+            loading="lazy"
+            reveal="auto">
+            <button slot="ar-button" class="ar-btn" type="button">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8V5a1 1 0 011-1h3M16 4h3a1 1 0 011 1v3M20 16v3a1 1 0 01-1 1h-3M8 20H5a1 1 0 01-1-1v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 7.5l4 2.2v4.6l-4 2.2-4-2.2V9.7l4-2.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              View in your space
+            </button>
+            <div class="view3d-progress" slot="progress-bar"><span></span></div>
+            <span class="view3d-size-tag">Ø 2.00 m × 0.85 m · true size</span>
+          </model-viewer>
+        </div>
+        <div class="view3d-copy">
+          <p class="eyebrow">New · Interactive</p>
+          <h2>See it in 3D / View in your space</h2>
+          <p class="section-lead">Spin the Recharge around, zoom in on the seats, then place it life-size on your deck, patio or lawn using your phone's camera. It's the easiest way to check the footprint before you buy.</p>
+          <ol class="view3d-steps">
+            <li><strong>Open this page on your phone</strong> (iPhone or Android, no app needed).</li>
+            <li><strong>Tap "View in your space"</strong> and point your camera at the ground.</li>
+            <li><strong>Walk around it</strong> to see how 2 metres across feels in your backyard.</li>
+          </ol>
+          <p class="view3d-desktop-note" id="view3d-desktop-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.2" stroke="currentColor" stroke-width="1.7"/><path d="M11 18.5h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <span>On a computer? Drag to rotate and scroll to zoom. Open this page on your phone to place the spa in your backyard.</span>
+          </p>
+          <p class="view3d-caption">Simplified 3D model built to the Recharge's true dimensions (Ø 200 × 85 cm, from the Passion Spas specification sheet), shown with water and the cover off. Shell detail, jet layout and cabinet finish are indicative only; see the photos above for the real thing.</p>
         </div>
       </div>
     </section>

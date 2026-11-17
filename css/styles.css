@@ -615,6 +615,67 @@ p { margin: 0 0 1em; }
 }
 .safety h3 { color: #3f321f; font-size: 1rem; }
 
+/* 3D / AR viewer */
+.gallery-stage .gallery-3d-btn {
+  position: absolute; left: 12px; bottom: 12px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 7px;
+  background: #fff; color: var(--navy-dark);
+  border-radius: 999px; padding: 8px 14px;
+  font-size: 0.88rem; font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,.15);
+}
+.gallery-stage .gallery-3d-btn:hover { background: var(--teal); color: #fff; }
+.view3d { background: linear-gradient(180deg, #fff 0%, var(--teal-wash) 100%); }
+.view3d-grid {
+  display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center;
+}
+.view3d-stage {
+  position: relative; border-radius: 14px; overflow: hidden;
+  background: radial-gradient(circle at 50% 40%, #fff 0%, #eef3f5 55%, #dde7ea 100%);
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.view3d-stage model-viewer {
+  display: block; width: 100%; height: clamp(360px, 40vw, 540px);
+  background: transparent;
+  --poster-color: transparent;
+  --progress-bar-color: var(--teal);
+}
+.ar-btn {
+  position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--teal); color: #fff; border: 0; border-radius: 999px;
+  padding: 13px 22px; font: 700 1rem var(--font); cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 132, 145, .35);
+  white-space: nowrap;
+}
+.ar-btn:hover, .ar-btn:focus-visible { background: var(--teal-hover); }
+.view3d-size-tag {
+  position: absolute; top: 14px; left: 14px;
+  background: rgba(255,255,255,.9); color: var(--navy-dark);
+  font-size: 0.8rem; font-weight: 700; padding: 6px 11px; border-radius: 999px;
+  border: 1px solid var(--line); pointer-events: none;
+}
+.view3d-progress { position: absolute; left: 0; right: 0; top: 0; height: 3px; }
+.view3d-progress span { display: block; height: 100%; width: 0; background: var(--teal); transition: width .2s; }
+.view3d-progress.hide { opacity: 0; transition: opacity .4s; }
+.view3d-copy .eyebrow {
+  color: var(--teal); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 8px;
+}
+.view3d-copy .section-lead { margin-bottom: 18px; }
+.view3d-steps { margin: 0 0 18px; padding-left: 1.2em; color: var(--ink); }
+.view3d-steps li { margin-bottom: 6px; }
+.view3d-desktop-note {
+  display: flex; gap: 10px; align-items: flex-start;
+  background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--teal);
+  border-radius: 8px; padding: 12px 14px; color: var(--navy-dark); font-size: 0.95rem;
+}
+.view3d-desktop-note svg { flex: none; color: var(--teal); margin-top: 2px; }
+.view3d-desktop-note.is-hidden { display: none; }
+.view3d-caption { color: var(--muted); font-size: 0.86rem; margin: 14px 0 0; }
+@media (max-width: 1024px) {
+  .view3d-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
 @media (max-width: 1024px) {
   .product-grid, .split, .split.reverse, .hydro-grid, .enquiry-grid, .spec-cols, .footer-grid {
     grid-template-columns: 1fr;
@@ -657,6 +718,7 @@ p { margin: 0 0 1em; }
 }
 
 @media (max-width: 560px) {
+  .view3d-stage model-viewer { height: 400px; }
   .card-grid, .footer-grid, .spec-cols { grid-template-columns: 1fr; }
   .feature-icons { grid-template-columns: 1fr 1fr; }
   .price { font-size: 2rem; }
