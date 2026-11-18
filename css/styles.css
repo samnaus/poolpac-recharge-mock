@@ -725,3 +725,85 @@ p { margin: 0 0 1em; }
   .stock { align-items: flex-start; }
   .stock span:last-child { display: inline; }
 }
+
+/* Passion Spas difference pillars */
+.center-kicker { text-align: center; }
+.kicker {
+  color: var(--teal);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  margin-bottom: 8px;
+}
+.section-dark .kicker { color: var(--teal-bright); }
+.pillars-section h2 { margin-bottom: 28px; }
+.pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.pillar {
+  position: relative; display: block; border-radius: 14px; overflow: hidden;
+  aspect-ratio: 4 / 5; color: #fff; background: var(--navy-deeper);
+  box-shadow: var(--shadow);
+}
+.pillar img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.pillar::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(20,32,37,0) 25%, rgba(20,32,37,.55) 55%, rgba(20,32,37,.92) 100%);
+}
+.pillar:hover img { transform: scale(1.05); }
+.pillar-body { position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 1; }
+.pillar-body strong { display: block; font-family: var(--display); font-size: 1.1rem; margin-bottom: 4px; color: #fff; }
+.pillar-body strong::after { content: "\00a0→"; color: var(--teal-bright); }
+.pillar-body span { font-size: 0.9rem; color: #dbe5e8; line-height: 1.4; display: block; }
+.pillar:hover { color: #fff; }
+.feat-card h3 .optional-tag { margin: 0 0 0 4px; vertical-align: middle; }
+
+/* Physical therapy */
+.therapy-head {
+  display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 40px; align-items: center; margin-bottom: 32px;
+}
+.therapy-head .section-lead { margin-bottom: 0; }
+.therapy-head-img { border-radius: 14px; width: 100%; height: 240px; object-fit: cover; }
+.therapy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.therapy-card {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;
+}
+.therapy-card img { width: 100%; height: 220px; object-fit: cover; background: #fff; }
+.therapy-body { padding: 20px 20px 22px; }
+.therapy-body h3 { font-size: 1.12rem; }
+.therapy-body p { color: #c5d2d6; font-size: 0.95rem; }
+.therapy-body p:last-child { margin-bottom: 0; }
+.therapy-note { color: #a9b9be; font-size: 0.88rem; margin: 26px 0 0; max-width: 860px; }
+.therapy-note a { color: var(--teal-bright); }
+.fine { font-size: 0.86rem; color: var(--muted); }
+
+/* Precision & design */
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.story-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.story-card img { width: 100%; height: 340px; object-fit: cover; background: #fff; }
+.story-body { padding: 24px 26px 26px; }
+.story-body p { color: var(--muted); }
+.story-body p:last-child { margin-bottom: 0; }
+
+@media (max-width: 1024px) {
+  .pillars { grid-template-columns: repeat(2, 1fr); }
+  .pillar { aspect-ratio: 4 / 3; }
+  .therapy-head { grid-template-columns: 1fr; gap: 24px; }
+  .therapy-grid { grid-template-columns: 1fr 1fr; }
+  .story-card img { height: 280px; }
+}
+@media (max-width: 700px) {
+  .therapy-grid, .story-grid { grid-template-columns: 1fr; }
+  .therapy-head-img { display: none; }
+  .therapy-head { margin-bottom: 24px; }
+}
+@media (max-width: 560px) {
+  .pillars { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .pillar { aspect-ratio: 3 / 4; }
+  .pillar-body { left: 12px; right: 12px; bottom: 12px; }
+  .pillar-body strong { font-size: 0.98rem; }
+  .pillar-body span { font-size: 0.8rem; }
+  .therapy-head-img { height: 200px; }
+  .story-card img { height: 230px; }
+}
+.feat-card img.img-contain, .story-card img.img-contain { object-fit: contain; background: #fff; padding: 10px; }
