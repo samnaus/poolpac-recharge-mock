@@ -1,6 +1,18 @@
 (function () {
   const galleryImages = [
     {
+      src: "assets/recharge-hero-timber.jpg",
+      alt: "A family of five relaxing in the Recharge spa on a timber deck at dusk, with native bush and a harbour beyond. Shown in a white marble shell and natural timber cabinet"
+    },
+    {
+      src: "assets/recharge-timber-dusk.jpg",
+      alt: "The Recharge spa, empty with jets bubbling, on a timber deck at dusk overlooking native bush and a harbour. Shown in a white marble shell and natural timber cabinet"
+    },
+    {
+      src: "assets/recharge-top-model.jpg",
+      alt: "Overhead studio view of the Recharge's white marble shell, with a woman sitting on the spa floor, showing the seat contours and jet layout"
+    },
+    {
       src: "assets/recharge-angle.png",
       alt: "The Recharge spa with a light interior, dark slatted cabinet and teal corner lighting"
     },
