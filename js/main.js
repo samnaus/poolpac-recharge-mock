@@ -62,6 +62,8 @@
     }
   ];
 
+  const HIDDEN_THUMB_INDICES = new Set([3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14]);
+
   let current = 0;
   const mainImg = document.getElementById("gallery-main");
   const thumbs = document.getElementById("gallery-thumbs");
@@ -71,8 +73,10 @@
   function renderThumbs() {
     thumbs.innerHTML = "";
     galleryImages.forEach((img, i) => {
+      if (HIDDEN_THUMB_INDICES.has(i)) return;
       const btn = document.createElement("button");
       btn.type = "button";
+      btn.dataset.index = String(i);
       btn.setAttribute("role", "listitem");
       btn.className = i === current ? "is-active" : "";
       btn.setAttribute("aria-label", "View image " + (i + 1));
@@ -89,8 +93,8 @@
     mainImg.alt = img.alt;
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
-    thumbs.querySelectorAll("button").forEach((btn, i) => {
-      btn.classList.toggle("is-active", i === current);
+    thumbs.querySelectorAll("button").forEach((btn) => {
+      btn.classList.toggle("is-active", Number(btn.dataset.index) === current);
     });
   }
 
@@ -202,6 +206,57 @@
     });
   });
 
+  // Quote drawer
+  const drawer = document.getElementById("quote-drawer");
+  const drawerPanel = drawer.querySelector(".quote-drawer-panel");
+  let drawerTrigger = null;
+
+  function openQuoteDrawer(trigger) {
+    drawerTrigger = trigger || null;
+    drawer.inert = false;
+    drawer.classList.add("is-open");
+    document.body.classList.add("drawer-open");
+    const firstField = drawer.querySelector("#enquiry-form:not(.is-hidden) input");
+    (firstField || drawerPanel).focus({ preventScroll: true });
+  }
+  function closeQuoteDrawer() {
+    drawer.classList.remove("is-open");
+    drawer.inert = true;
+    document.body.classList.remove("drawer-open");
+    if (drawerTrigger) drawerTrigger.focus({ preventScroll: true });
+  }
+
+  document.querySelectorAll('a[href="#enquire"]').forEach((link) => {
+    link.setAttribute("aria-controls", "quote-drawer");
+    link.setAttribute("aria-haspopup", "dialog");
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      openQuoteDrawer(link);
+    });
+  });
+  drawer.querySelectorAll("[data-close-quote]").forEach((el) => {
+    el.addEventListener("click", closeQuoteDrawer);
+  });
+  drawer.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeQuoteDrawer();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const focusable = [...drawerPanel.querySelectorAll("a[href], button, input, select, textarea")]
+      .filter((el) => el.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+
   // Enquiry form
   const form = document.getElementById("enquiry-form");
   const thanks = document.getElementById("enquiry-thanks");
@@ -210,7 +265,7 @@
     if (!form.reportValidity()) return;
     form.classList.add("is-hidden");
     thanks.classList.add("is-visible");
-    thanks.scrollIntoView({ behavior: "smooth", block: "center" });
+    drawerPanel.scrollTop = 0;
   });
 
   // Mobile nav

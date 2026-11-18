@@ -101,7 +101,7 @@
             <span class="collection-label">Pure Collection</span>
           </div>
           <h1>Recharge Spa Pool</h1>
-          <p class="stock"><span class="dot" aria-hidden="true"></span><span><strong>Available to order</strong> — talk to us about delivery timeframes</span></p>
+          <p class="stock"><span class="dot" aria-hidden="true"></span><span class="stock-status"><strong>In stock</strong> — ready to ship</span></p>
 
           <p class="price">$10,995</p>
           <p class="price-note">Price includes Walk on Cover and GST</p>
@@ -125,20 +125,20 @@
           <a class="btn btn-primary" href="#enquire">Get a quote</a>
           <a class="btn btn-secondary" href="tel:+645087665722">Call 0508 766 5722</a>
 
-          <div class="trust-row">
-            <div>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.4 8.4-8 9.5C7.4 20.4 4 17 4 12V7l8-4z" stroke="#008491" stroke-width="1.7"/></svg>
-              Locally owned &amp; operated
-            </div>
-            <div>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h11v10H3V7zm11 3h4l3 3v4h-7V10zM7 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm11 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" stroke="#008491" stroke-width="1.6"/></svg>
-              Supply &amp; install nationwide
-            </div>
-            <div>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18V6h16v12H4zm2-2h5l3-3 3 3h3" stroke="#008491" stroke-width="1.6"/></svg>
-              Showroom in Mount Maunganui
-            </div>
-          </div>
+          <ul class="trust-row">
+            <li>
+              <img src="assets/icon-trust-nz-owned.png" width="37" height="32" alt="">
+              <span>NZ Owned &amp;<br>Operated</span>
+            </li>
+            <li>
+              <img src="assets/icon-trust-fast-delivery.png" width="40" height="32" alt="">
+              <span>Fast<br>Delivery</span>
+            </li>
+            <li>
+              <img src="assets/icon-trust-warranty.png" width="24" height="32" alt="">
+              <span>World-Class<br>Warranties</span>
+            </li>
+          </ul>
 
           <div class="acc">
             <div class="acc-item is-open">
@@ -625,18 +625,28 @@
     </section>
 
     <section class="section section-muted" id="enquire">
-      <div class="wrap enquiry-grid">
-        <div>
-          <h2>Get a quote on the Recharge</h2>
-          <p>Tell us a little about your project and the Poolpac team will come back to you with pricing, availability and installation advice. Or visit the showroom in Mount Maunganui and see Passion Spas in person.</p>
-          <ul class="contact-list">
-            <li>Phone: <a href="tel:+645087665722">0508 766 5722</a> or <a href="tel:+6475755906">07 575 5906</a></li>
-            <li>Email: <a href="mailto:info@poolpac.co.nz">info@poolpac.co.nz</a></li>
-            <li>Showroom: 20B Owens Place, Bayfair, Mount Maunganui</li>
-            <li>Hours: Tue–Fri 9:00 am–4:00 pm · Sat 10:00 am–2:00 pm · Closed Mon &amp; Sun</li>
-          </ul>
-          <p><a href="assets/recharge-specification-sheet.pdf" download>Download the Recharge specification sheet (PDF)</a></p>
+      <div class="wrap enquiry-intro">
+        <h2>Get a quote on the Recharge</h2>
+        <p>Tell us a little about your project and the Poolpac team will come back to you with pricing, availability and installation advice. Or visit the showroom in Mount Maunganui and see Passion Spas in person.</p>
+        <ul class="contact-list">
+          <li>Phone: <a href="tel:+645087665722">0508 766 5722</a> or <a href="tel:+6475755906">07 575 5906</a></li>
+          <li>Email: <a href="mailto:info@poolpac.co.nz">info@poolpac.co.nz</a></li>
+          <li>Showroom: 20B Owens Place, Bayfair, Mount Maunganui</li>
+          <li>Hours: Tue–Fri 9:00 am–4:00 pm · Sat 10:00 am–2:00 pm · Closed Mon &amp; Sun</li>
+        </ul>
+        <p><a href="assets/recharge-specification-sheet.pdf" download>Download the Recharge specification sheet (PDF)</a></p>
+        <a class="btn btn-primary enquiry-cta" href="#enquire" aria-controls="quote-drawer">Get a quote</a>
+      </div>
+    </section>
+
+    <div class="quote-drawer" id="quote-drawer" inert>
+      <div class="quote-drawer-backdrop" data-close-quote></div>
+      <div class="quote-drawer-panel" role="dialog" aria-modal="true" aria-labelledby="quote-drawer-title" tabindex="-1">
+        <div class="quote-drawer-head">
+          <h2 id="quote-drawer-title">Get a quote on the Recharge</h2>
+          <button class="quote-drawer-close" type="button" data-close-quote aria-label="Close quote form">&times;</button>
         </div>
+        <p class="quote-drawer-lead">Tell us a little about your project and we&rsquo;ll come back to you with pricing, availability and installation advice.</p>
         <div>
           <form class="form" id="enquiry-form" action="#" method="post" novalidate>
             <div class="form-row">
@@ -652,8 +662,26 @@
               <input id="phone" name="phone" type="tel" autocomplete="tel" required>
             </div>
             <div class="form-row">
-              <label for="city">Town or city</label>
-              <input id="city" name="city" type="text" autocomplete="address-level2">
+              <label for="region">Region</label>
+              <select id="region" name="region" autocomplete="address-level1">
+                <option value="">Select your region</option>
+                <option>Northland</option>
+                <option>Auckland</option>
+                <option>Waikato</option>
+                <option>Bay of Plenty</option>
+                <option>Gisborne</option>
+                <option>Hawke&rsquo;s Bay</option>
+                <option>Taranaki</option>
+                <option>Manawatū-Whanganui</option>
+                <option>Wellington</option>
+                <option>Tasman</option>
+                <option>Nelson</option>
+                <option>Marlborough</option>
+                <option>West Coast</option>
+                <option>Canterbury</option>
+                <option>Otago</option>
+                <option>Southland</option>
+              </select>
             </div>
             <div class="form-row">
               <label for="message">Message</label>
@@ -669,7 +697,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <section class="section faq" id="faqs">
       <div class="wrap faq-wrap">
